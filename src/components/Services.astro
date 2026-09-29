@@ -1,0 +1,23 @@
+---
+import { services } from '../config';
+---
+
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What I fix</span>
+      <h2>Services</h2>
+      <p>Straightforward help for the technology problems that actually come up at home and at work.</p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((service, i) => (
+        <a class="service-card" href={service.href ?? '#contact'}>
+          <span class="service-card__index">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

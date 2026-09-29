@@ -1,0 +1,44 @@
+---
+// Floating SERRA assistant: a guided decision tree (see src/scripts/serra.js).
+// Markup only lives here; all behavior is in the imported script so the
+// logic can be swapped for a real API later without touching this file.
+---
+
+<button
+  id="serraLauncher"
+  class="serra-launcher"
+  type="button"
+  aria-expanded="false"
+  aria-controls="serraPanel"
+  aria-label="Open SERRA, Danny's tech-help assistant"
+>
+  <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+    <!-- monitor -->
+    <rect x="4" y="5" width="32" height="22" rx="2.5" stroke="#ffffff" stroke-width="2.5" />
+    <!-- eyes -->
+    <circle cx="14" cy="15" r="2.3" fill="#ffffff" />
+    <circle cx="26" cy="15" r="2.3" fill="#ffffff" />
+    <!-- cursor "mouth" -->
+    <rect class="serra-cursor" x="15" y="20.5" width="10" height="2.4" fill="#b45309" />
+    <!-- stand -->
+    <rect x="17" y="27" width="6" height="4" fill="#ffffff" />
+    <rect x="12" y="31" width="16" height="2.5" rx="1" fill="#ffffff" />
+  </svg>
+</button>
+
+<div id="serraPanel" class="serra-panel" role="dialog" aria-label="SERRA tech-help assistant" aria-modal="false">
+  <div class="serra-panel__header">
+    <div class="serra-panel__header-title">
+      <span aria-hidden="true">&gt;_</span> SERRA
+    </div>
+    <button id="serraClose" class="serra-panel__close" type="button" aria-label="Close SERRA">
+      &times;
+    </button>
+  </div>
+  <div id="serraBody" class="serra-panel__body"></div>
+  <div id="serraFooter" class="serra-panel__footer" style="display:none;"></div>
+</div>
+
+<script>
+  import '../scripts/serra.js';
+</script>

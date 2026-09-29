@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+import { business } from '../config';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Serrano Digital | Local Computer & Tech Help in Manhattan',
+  description = 'Local in-home computer and tech support in Lincoln Square, Upper West Side and Midtown West. PC, Mac, Wi-Fi, printers, setup, repairs and small-business IT.',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/images/og-image.png', Astro.site);
+
+// LocalBusiness structured data. City/region only — no home street number,
+// intentionally, for the owner's privacy. Update `priceRange` / areaServed
+// in src/config.js if your rates or coverage change.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: business.name,
+  image: ogImageURL.toString(),
+  url: business.website,
+  telephone: business.phoneDisplay,
+  email: business.email,
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: business.addressLocality,
+    addressRegion: business.addressRegion,
+    addressCountry: 'US',
+  },
+  areaServed: {
+    '@type': 'Place',
+    name: `${business.serviceAreaLong} (Lincoln Square, Upper West Side, Midtown West)`,
+  },
+  founder: {
+    '@type': 'Person',
+    name: business.owner,
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- LocalBusiness structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>

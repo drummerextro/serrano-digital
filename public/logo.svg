@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">Serrano Digital</title>
+  <!--
+    PLACEHOLDER LOGO
+    Danny: drop your real logo file in here as public/logo.svg (or .png)
+    and update the `src` in src/components/Header.astro and Footer.astro
+    if you change the filename or format.
+  -->
+  <rect x="0" y="4" width="32" height="32" rx="3" fill="#0f0f0f" />
+  <text x="16" y="27" text-anchor="middle" font-family="ui-monospace, 'SF Mono', 'Courier New', monospace" font-size="18" font-weight="700" fill="#ffffff">S</text>
+  <rect x="30" y="4" width="3" height="32" fill="#b45309" />
+  <text x="42" y="26" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#0f0f0f">Serrano Digital</text>
+</svg>

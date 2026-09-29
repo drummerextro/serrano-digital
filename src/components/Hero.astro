@@ -1,0 +1,31 @@
+---
+import { business } from '../config';
+---
+
+<section class="hero" id="top">
+  <div class="container hero__grid">
+    <div>
+      <span class="eyebrow">Serrano Digital &middot; {business.credential}</span>
+      <h1>Local Computer &amp; Tech Help</h1>
+      <p class="hero__sub">
+        In-home tech support for {business.neighborhoods}.
+      </p>
+      <p class="hero__desc">
+        PC or Mac problems, Wi-Fi, printers, new computer setup, upgrades, data
+        transfer and small-business IT.
+      </p>
+      <p class="hero__location">
+        Based on {business.baseLocation}. Primarily serving {business.serviceAreaShort}.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn-accent" href="#contact">Book a Visit</a>
+        <a class="btn btn-outline" href={business.phoneHref}>Call or Text Danny</a>
+      </div>
+
+      <p class="trust-line">
+        {business.credential} &bull; Windows &amp; Mac &bull; In-Home &amp; Remote Support
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,97 @@
+---
+import { business, FORM_ACTION } from '../config';
+---
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Book a Visit</h2>
+      <p>Tell me what's going on and I'll follow up to schedule a visit or a remote session.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-direct">
+        <h3>Direct</h3>
+        <a href={business.phoneHref}>{business.phoneDisplay}</a>
+        <a href={`mailto:${business.email}`}>{business.email}</a>
+        <p style="margin-top: var(--space-2);">
+          Based on {business.baseLocation}. Serving {business.serviceAreaShort}.
+        </p>
+      </div>
+
+      <form
+        action={FORM_ACTION}
+        method="POST"
+        id="contactForm"
+      >
+        <!--
+          Form backend: FormSubmit.co (no server or API key needed).
+          The FIRST submission sends a one-time confirmation email to
+          business.email (see src/config.js) — click it to activate delivery.
+          To switch to a different provider later, change FORM_ACTION in
+          src/config.js and adjust the hidden fields below as needed.
+        -->
+        <input type="hidden" name="_subject" value="New request — Serrano Digital site" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <!-- Honeypot spam trap: real visitors never see or fill this -->
+        <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" />
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="Name" type="text" required autocomplete="name" />
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="Phone" type="tel" required autocomplete="tel" />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input id="email" name="Email" type="email" required autocomplete="email" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="context">Home or Business</label>
+            <select id="context" name="Home or Business" required>
+              <option value="">Select one</option>
+              <option>Home</option>
+              <option>Business</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="device">Device / Issue type</label>
+            <select id="device" name="Device" required>
+              <option value="">Select one</option>
+              <option>PC</option>
+              <option>Mac</option>
+              <option>Wi-Fi</option>
+              <option>Printer</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="description">What's going on?</label>
+          <textarea id="description" name="Description" rows="4" required></textarea>
+        </div>
+
+        <div class="form-field">
+          <label for="datetime">Preferred day/time</label>
+          <input id="datetime" name="Preferred day/time" type="text" placeholder="e.g. Thursday afternoon" />
+        </div>
+
+        <button class="btn btn-accent btn-block" type="submit">Send Request</button>
+        <p class="form-note">
+          This form sends straight to {business.email}. For anything urgent, call or text
+          <a href={business.phoneHref}>{business.phoneDisplay}</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+---
+import { business } from '../config';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div>
+      &copy; {year} {business.name}. {business.baseLocation}.
+    </div>
+    <div>
+      <a href={business.phoneHref}>{business.phoneDisplay}</a>
+      &nbsp;&middot;&nbsp;
+      <a href={`mailto:${business.email}`}>{business.email}</a>
+    </div>
+  </div>
+</footer>
